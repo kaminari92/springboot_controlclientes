@@ -5,7 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.genzai.dao.IPersonaDao;
+import com.genzai.service.PersonaService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -14,12 +14,12 @@ import lombok.extern.slf4j.Slf4j;
 public class IndexController {
 	
 	@Autowired
-	private IPersonaDao personaDao;
+	private PersonaService personaService;
 
 	@GetMapping("/")
 	public String inicio(Model model) {
 		//log.info("Ejecutando el controlador Spring MVC");
-		var personas = personaDao.findAll();
+		var personas = personaService.listarPersonas();
 		model.addAttribute("personas",personas);
 		return "index.html";
 	}
