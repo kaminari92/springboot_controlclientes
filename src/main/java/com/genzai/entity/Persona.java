@@ -9,6 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 @Table(schema = "udemy", name = "persona")
@@ -21,15 +23,20 @@ public class Persona implements Serializable {
 	@Column(name = "id_persona")
 	private Long idPersona;
 
+	@NotEmpty
 	@Column(name = "nombre")
 	private String nombre;
 
+	@NotEmpty
 	@Column(name = "apellido")
 	private String apellido;
 
+	@NotEmpty
+	@Email
 	@Column(name = "email")
 	private String email;
 
+	@NotEmpty
 	@Column(name = "telefono")
 	private String telefono;
 
