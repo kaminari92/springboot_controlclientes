@@ -36,4 +36,11 @@ public class IndexController {
 		personaService.guardar(persona);
 		return "redirect:/";
 	}
+	
+	@GetMapping("/editar/{idPersona}")
+	public String editar(Persona persona, Model model) {
+		persona = personaService.buscar(persona);
+		model.addAttribute(persona);
+		return "modificar";
+	}
 }
